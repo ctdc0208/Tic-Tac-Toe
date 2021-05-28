@@ -1,4 +1,41 @@
+body {
+  background-color: #ff3749;
+  text-align: center;
+}
+
+
+
 .main-body {
   display: flex;
   flex-direction: row;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.player-one,
+.player-two {
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  padding: 10px;
+  margin: 30px;
+  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+}
+.player-one {
+
+}
+.player-two {
+
+}
+
+.main-game {
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 20px 10px 20px 10px;
+  border-radius: 10px;
+  width: 400px;
+  height: 400px;
 }
