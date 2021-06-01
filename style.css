@@ -1,5 +1,7 @@
 body {
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-background {
@@ -8,7 +10,7 @@ body {
     padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
-    background-image: url("https://images.pexels.com/photos/4926899/pexels-photo-4926899.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/5088017/pexels-photo-5088017.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
       top: 0;
       bottom: 0;
       right: 0;
@@ -29,6 +31,7 @@ body {
 
 .heading {
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: center;
 }
@@ -67,10 +70,8 @@ margin-bottom: 120px;
 .main-body {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
 }
 
 .player-one,
@@ -97,6 +98,7 @@ margin-bottom: 120px;
   border-radius: 10px;
   width: 400px;
   height: 400px;
+  margin-top: 0px;
 }
 
 
@@ -118,28 +120,14 @@ table:hover {
 td {
   width: 110px;
   height: 110px;
-}
-
-#td11 {
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-#td13 {
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-}
-
-#td22 {
   border: 1px solid black;
 }
 
-#td31 {
-  border-top: 1px solid black;
-  border-right: 1px solid black;
+.player-one-mark:before {
+  content: "\2715";
+  font-size: 80px;
 }
-
-#td33 {
-  border-top: 1px solid black;
-  border-left: 1px solid black;
+.player-two-mark:before {
+  content: "\1F786";
+ font-size: 85px;
 }
