@@ -9,13 +9,28 @@
   <div class = "main-background">
   <div class = "half-black">
     <div class = "heading">
-      <div class ="player-name">
+      <button class ="player-name" id = "player-name">
         Player Names
-      </div>
+      </button>
       <div class = "start-restart">
         Start/Restart
       </div>
     </div>
+
+      <div id = "popUp">
+        <form class="form" action='/script.js'>
+          <span class="close">&times;</span>
+          <h3>Player One</h3>
+          <div class = "">
+              <p><input type='text' id='playerOne' name='Player One' autocomplete="off" placeholder="Player One's Name" required></p>
+          </div>
+          <h4>Player Two</h4>
+          <div class = "">
+              <p><input type='text' id='playerOne' name='Player Two' autocomplete="off" placeholder="Player One's Name" required></p>
+          </div>
+          <button type='button' id="addPlayers">Add Players</button>
+        <form>
+      </div>
 
     <div class = "main-body">
       <div class = "player-one" id = "player-one">

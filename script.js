@@ -3,9 +3,6 @@ let myGame = []; //gameboard
 let gameFlow = []; // flow of the game
 
 const gameBoard = (() => {
-    }
-  );
-  }
 
 })(); // gameboard module
 
@@ -22,6 +19,11 @@ const displayController = (() => {
 })(); // displayController module
 
 const myPlayers = (playerOne, playerTwo) => {
+  function addPlayers() {
+
+  }
+
+
   function createPlayer(event) {
     const form = document.querySelector('form');
     const playerOneInput = document.querySelector('#player-one');
@@ -37,7 +39,26 @@ const myPlayers = (playerOne, playerTwo) => {
 } // players factory
 
 
+  const newPlayer = document.querySelector('#player-name');
+  newPlayer.addEventListener('click', () => popUpForm.style.display = 'block');
+
+  const popUpForm = document.getElementById('popUp');
+
+  const closePopUp = document.getElementsByTagName('span')[0];
+  closePopUp.addEventListener('click', () => popUpForm.style.display = 'none');
+function showPlayers() {
+    popUpForm.style.display = 'none';
+
+    const showOne = document.querySelector('#player-one');
+    showOne.textContent = myPlayers.playerOne;
+  }
+
+
+
 const jeff = myPlayers("Jeff", "Jeff2");
 
 console.log(jeff.playerOne);
 console.log(jeff.playerTwo);
+
+
+showPlayers();
