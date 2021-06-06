@@ -1,16 +1,39 @@
-let myGame = []; //gameboard
-//let myPlayers = []; // players
-let gameFlow = []; // flow of the game
+let playerOne = "player-one-mark";
+let playerTwo = "player-two-mark";
 
 const gameBoard = (() => {
 
 })(); // gameboard module
 
+
+
+
+
+
+
 const displayController = (() => {
+  function game_loop() {
+    check_board_complete();
+    check_for_winner();
+  }
+
   function addMove() {
     document.addEventListener('click', (event) => {
       const { target } = event;
       const tr = target.parentNode.parentNode.rowIndex - 1;
+      const playerOneMove = i => {
+        if (!board_full && play_board[e] == "") {
+        play_board[i] = playerOne;
+        game_loop();
+        playerTwoMove();
+        }
+      };
+      const playerTwoMove = e => {
+        if (!board_full && play_board[e] == "") {
+        play_board[e] = playerTwo;
+        game_loop();
+        }
+      };
 
     }
   );
