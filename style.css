@@ -171,6 +171,13 @@ td {
   height: 110px;
   border: 1px solid black;
 }
+td:hover{
+  background-color: green;
+}
+
+.player-mark-blank {
+
+}
 
 .player-one-mark:before {
   content: "\2715";
@@ -179,4 +186,8 @@ td {
 .player-two-mark:before {
   content: "\1F786";
  font-size: 85px;
+}
+
+.active {
+  background-color: red;
 }

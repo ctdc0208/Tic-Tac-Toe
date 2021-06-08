@@ -1,87 +1,31 @@
-let playerOne = "player-one-mark";
-let playerTwo = "player-two-mark";
-
-const gameBoard = (() => {
-
-})(); // gameboard module
-
-
-
-
-
-
+let playerXIcon = "player-one-mark";
+let playerOIcon = "player-two-mark";
+let playerOneSign = "X";
+let playerTwoSign = "O";
 
 const displayController = (() => {
-  function game_loop() {
-    check_board_complete();
-    check_for_winner();
-  }
+  players = document.getElementById(".player-one .player-two"),
+  allBox = document.querySelector("tr td"),
+  mainBoard = document.querySelector(".main-game");
 
-  function addMove() {
-    document.addEventListener('click', (event) => {
-      const { target } = event;
-      const tr = target.parentNode.parentNode.rowIndex - 1;
-      const playerOneMove = i => {
-        if (!board_full && play_board[e] == "") {
-        play_board[i] = playerOne;
-        game_loop();
-        playerTwoMove();
-        }
-      };
-      const playerTwoMove = e => {
-        if (!board_full && play_board[e] == "") {
-        play_board[e] = playerTwo;
-        game_loop();
-        }
-      };
-
+  function clickSelectBox() {
+    for (let i = 0; i < allBox.length; i++) {
+      allBox[i].setAttribute("onclick", "clickBox(this)");
     }
-  );
+  function clickBox(element) {
+    if(players.classlist.contain("player-one")) {
+      element.innerHTML = `<i class=${playerXIcon}></i>`;
+      players.classlist.add('active')
+      element.setAttribute("id", playerOneSign);
+    } else {
+      element.innerHTML = `<i class=${playerOIcon}></i>`;
+      players.classlist.add('active')
+      element.setAttribute("id", playerTwpSign);
+    }
+    checkWinner();
+    element.style.pointerEvents = "none";
   }
 
+
+}
 })(); // displayController module
-
-const myPlayers = (playerOne, playerTwo) => {
-  function addPlayers() {
-
-  }
-
-
-  function createPlayer(event) {
-    const form = document.querySelector('form');
-    const playerOneInput = document.querySelector('#player-one');
-    const playerTwoInput = document.querySelector('#player-two');
-
-    if (playerOneInput.value !== '' && playerOneInput.value !== '') {
-      myPlayers(playerOneInput.value, playerTwoInput.value)
-      }
-    form.reset();
-    }
-
-  return {playerOne, playerTwo};
-} // players factory
-
-
-  const newPlayer = document.querySelector('#player-name');
-  newPlayer.addEventListener('click', () => popUpForm.style.display = 'block');
-
-  const popUpForm = document.getElementById('popUp');
-
-  const closePopUp = document.getElementsByTagName('span')[0];
-  closePopUp.addEventListener('click', () => popUpForm.style.display = 'none');
-function showPlayers() {
-    popUpForm.style.display = 'none';
-
-    const showOne = document.querySelector('#player-one');
-    showOne.textContent = myPlayers.playerOne;
-  }
-
-
-
-const jeff = myPlayers("Jeff", "Jeff2");
-
-console.log(jeff.playerOne);
-console.log(jeff.playerTwo);
-
-
-showPlayers();
