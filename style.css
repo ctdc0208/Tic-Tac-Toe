@@ -175,10 +175,6 @@ td:hover{
   background-color: green;
 }
 
-.player-mark-blank {
-
-}
-
 .player-one-mark:before {
   content: "\2715";
   font-size: 80px;
