@@ -39,7 +39,11 @@ const addPlayerMove = e => {
 };
 
 function switchTurn() {
+<<<<<<< HEAD
   if (Math.rand
+=======
+  if (Math.random() < Math.random()) {
+>>>>>>> ac02b71c11396ef26b841b6d00b5fe412d3adf7e
     player = "X";
   } else {
       player="O";
