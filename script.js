@@ -4,6 +4,8 @@ let board_full = false;
 
 const playerOne = "0";
 const playerTwo = "X";
+let playerTurn
+
 
 const rendergame = (() => {
   function render_board(){
@@ -17,6 +19,7 @@ const rendergame = (() => {
 });
 
 const displayController = (() => {
+
 });
 
 const players = (playerOne, playerTwo) => {
@@ -31,30 +34,21 @@ rendergame();
 
 
 const addPlayerMove = e => {
-  switchTurn()
+  const currentTurn = playerTurn ? playerOne : playerTwo;
   if (!board_full && game_board[e] == "") {
-    game_board[e] = player;
+    game_board[e] = currentTurn;
     game_loop();
   }
+  switchTurn();
 };
 
 function switchTurn() {
-<<<<<<< HEAD
-  if (Math.rand
-=======
-  if (Math.random() < Math.random()) {
->>>>>>> ac02b71c11396ef26b841b6d00b5fe412d3adf7e
-    player = "X";
-  } else {
-      player="O";
-    }
-  if (player == 'X') {
-     player = "O";
-   } else {
-     player = "X";
-   }
+  playerTurn = !playerTurn;
 }
 
 const game_loop = () => {
   rendergame();
 }
+
+displayController();
+rendergame();
