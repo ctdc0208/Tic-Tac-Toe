@@ -1,10 +1,10 @@
 let game_board = ["", "", "", "", "", "", "", "", ""];
-let myPlayers = [];
+let mycurrentTurns = [];
 let board_full = false;
 
-const playerOne = "0";
+const playerOne = "O";
 const playerTwo = "X";
-let playerTurn
+let currentTurnTurn;
 
 
 const rendergame = (() => {
@@ -12,29 +12,14 @@ const rendergame = (() => {
     const board_container = document.querySelector(".play-area");
     board_container.innerHTML = ""
     game_board.forEach((e, i) => {
-        board_container.innerHTML += `<div id="block_${i}" class="block" onclick="addPlayerMove(${i})">${game_board[i]}</div>`
+        board_container.innerHTML += `<div id="block_${i}" class="block" onclick="addcurrentTurnMove(${i})">${game_board[i]}</div>`
     });
   };
   render_board();
 });
 
-const displayController = (() => {
-
-});
-
-const players = (playerOne, playerTwo) => {
-}
-
-const game_flow = (() => {
-
-});
-
-
-rendergame();
-
-
-const addPlayerMove = e => {
-  const currentTurn = playerTurn ? playerOne : playerTwo;
+function addcurrentTurnMove(e){
+  const currentTurn = currentTurnTurn ? playerOne : playerTwo;
   if (!board_full && game_board[e] == "") {
     game_board[e] = currentTurn;
     game_loop();
@@ -43,12 +28,35 @@ const addPlayerMove = e => {
 };
 
 function switchTurn() {
-  playerTurn = !playerTurn;
+  currentTurnTurn = !currentTurnTurn;
 }
 
 const game_loop = () => {
   rendergame();
+  check_winner();
 }
 
-displayController();
+function check_match(){
+
+}
+
+function check_winner() {
+  const winner = document.getElementById('winner');
+  let win = check_match();
+  if (win == playerOne){
+    winner.innerText = "Player One Win!";
+    board_full = true;
+  } else if (win == playerTwo) {
+    winner.innerText = "Player Two Win!";
+    board_full = true;
+  } else if (board_full) {
+    winner.innerText = "Draw!";
+  }
+}
+
+
+
+
+
 rendergame();
+console.log(check_winner)
