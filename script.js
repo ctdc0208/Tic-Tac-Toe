@@ -34,6 +34,7 @@ function switchTurn() {
 const game_loop = () => {
   rendergame();
   check_winner();
+  check_board_full();
 }
 
 function check_lines(a, b, c) {
