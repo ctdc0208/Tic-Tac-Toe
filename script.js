@@ -2,8 +2,8 @@ let game_board = ["", "", "", "", "", "", "", "", ""];
 let mycurrentTurns = [];
 let board_full = false;
 
-const playerOne = "O";
-const playerTwo = "X";
+const playerOne = "X";
+const playerTwo = "O";
 let currentTurnTurn;
 
 
@@ -19,7 +19,7 @@ const rendergame = (() => {
 });
 
 function addcurrentTurnMove(e){
-  const currentTurn = currentTurnTurn ? playerOne : playerTwo;
+  const currentTurn = currentTurnTurn ? playerTwo : playerOne;
   if (!board_full && game_board[e] == "") {
     game_board[e] = currentTurn;
     game_loop();
@@ -36,8 +36,40 @@ const game_loop = () => {
   check_winner();
 }
 
-function check_match(){
-
+function check_lines(a, b, c) {
+  return (
+    game_board[a] == game_board[b] &&
+    game_board[b] == game_board[c] &&
+    (game_board[a] == playerOne || game_board[a] == playerTwo)
+  );
+}
+function check_match() {
+  for (i = 0; i < 9; i += 3) {
+    if (check_lines(i, i + 1, i + 2)) {
+      return game_board[i];
+    }
+  }
+  for (i = 0; i < 3; i++) {
+    if (check_lines(i, i + 3, i + 6)) {
+      return game_board[i];
+    }
+  }
+  if (check_lines(0, 4, 8)) {
+    return game_board[0];
+  }
+  if (check_lines(2, 4, 6)) {
+    return game_board[2];
+  }
+  return "";
+}
+function check_board_full() {
+    let flag = true;
+  play_board.forEach(element => {
+    if (element != playerOne && element != playerTwo) {
+      flag = false;
+    }
+  });
+  board_full = flag;
 }
 
 function check_winner() {
