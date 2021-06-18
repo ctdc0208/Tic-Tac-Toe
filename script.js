@@ -5,7 +5,7 @@ let board_full = false;
 const playerOne = "X";
 const playerTwo = "O";
 let currentTurnTurn;
-
+const restartButton = document.getElementById('restart');
 
 const rendergame = (() => {
   function render_board(){
@@ -86,6 +86,17 @@ function check_winner() {
     winner.innerText = "Draw!";
   }
 }
+
+function reset_board() {
+  game_board = ["", "", "", "", "", "", "", "", ""];
+  board_full = false;
+  winner.classList.remove("playerWin");
+  winner.classList.remove("computerWin");
+  winner.classList.remove("draw");
+  winner.innerText = "";
+  rendergame();
+};
+restartButton.addEventListener('click', reset_board);
 
 
 
