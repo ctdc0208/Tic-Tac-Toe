@@ -33,8 +33,8 @@ function switchTurn() {
 
 const game_loop = () => {
   rendergame();
-  check_winner();
   check_board_full();
+  check_winner();
 }
 
 function check_lines(a, b, c) {
@@ -65,7 +65,7 @@ function check_match() {
 }
 function check_board_full() {
     let flag = true;
-  play_board.forEach(element => {
+    game_board.forEach(element => {
     if (element != playerOne && element != playerTwo) {
       flag = false;
     }
@@ -92,4 +92,3 @@ function check_winner() {
 
 
 rendergame();
-console.log(check_winner)
