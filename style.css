@@ -215,12 +215,17 @@ h4 {
 }
 
 #winner {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgb(238, 238, 238);
   color: black;
   text-align: center;
   font-size: 40px;
-  margin: 20px;
-  width:420px;
+  margin-top: 20px;
+  width: 420px;
   box-sizing: border-box;
   border-radius: 10px;
 }
