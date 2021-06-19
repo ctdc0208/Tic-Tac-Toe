@@ -78,18 +78,12 @@ body {
 .player-two {
   box-sizing: border-box;
   background-color: #f3f3f3;
-  padding: 10px;
   margin: 30px;
   border-radius: 10px;
   width: 200px;
   height: 200px;
 }
-.player-one {
 
-}
-.player-two {
-
-}
 
 
 #popUp {
@@ -215,13 +209,13 @@ h4 {
 }
 
 #winner {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(238, 238, 238);
-  color: black;
+	position: absolute;
+	left: 0;
+	right: 0;
+
+	margin: auto;
+  background-color: gray;
+  color: white;
   text-align: center;
   font-size: 40px;
   margin-top: 20px;
@@ -231,9 +225,9 @@ h4 {
 }
 
 
-p1 {
-  font-size: 50px;
-}
-p2 {
-  font-size: 50px;
+p1, p2 {
+  font-size: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
