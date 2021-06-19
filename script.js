@@ -137,7 +137,7 @@ function check_winner() {
   let win = check_match();
   for (let i = 0; i < myPlayers.length; i += 1) {
     if (win == playerOne){
-      winner.innerText = myPlayers[i].playerTwo + " Win!";
+      winner.innerText = myPlayers[i].playerOne + " Win!";
       board_full = true;
     } else if (win == playerTwo) {
       winner.innerText = myPlayers[i].playerTwo + " Win!";
