@@ -1,11 +1,70 @@
 let game_board = ["", "", "", "", "", "", "", "", ""];
 let mycurrentTurns = [];
 let board_full = false;
+let myPlayers = [];
 
 const playerOne = "X";
 const playerTwo = "O";
 let currentTurnTurn;
 const restartButton = document.getElementById('restart');
+
+const popUpForm = document.getElementById('popUp')
+const playerNames = document.querySelector('#player-name');
+playerNames.addEventListener('click', () => popUpForm.style.display = 'block');
+const closePopUp = document.getElementsByTagName('span')[0];
+closePopUp.addEventListener('click', () => popUpForm.style.display = 'none');
+
+const players = (playerOne, playerTwo) => {
+  return { playerOne, playerTwo};
+}
+
+function addPlayerNames(playerOne, playerTwo) {
+  popUpForm.style.display = 'none';
+
+  const newPlayer = players(playerOne, playerTwo);
+  myPlayers.push(newPlayer);
+  displayPlayers();
+}
+
+function displayPlayers() {
+    const p1 = document.querySelector('#player1Name');
+    p1.textContent = '';
+    for (let i = 0; i < myPlayers.length; i += 1) {
+      const p1Name = document.createElement('p1');
+      p1Name.textContent = myPlayers[i].playerOne;
+      p1.appendChild(p1Name);
+    }
+
+    const p2 = document.querySelector('#player2Name');
+    p2.textContent = '';
+    for (let i = 0; i < myPlayers.length; i += 1) {
+      const p2Name = document.createElement('p2');
+      p2Name.textContent = myPlayers[i].playerTwo;
+      p2.appendChild(p2Name);
+    }
+}
+function createPlayers(event) {
+  const form = document.querySelector('form')
+  const pOneInput = document.querySelector('#playerOne');
+  const pTwoInput = document.querySelector('#playerTwo');
+  if (pOneInput.value !== '' & pTwoInput.value !=='') {
+    addPlayerNames(pOneInput.value, pTwoInput.value);
+  }
+  form.reset();
+}
+function listenClicks() {
+  document.addEventListener('click', (event) => {
+    const { target } = event;
+    if (target.id === 'add-players') {
+      myPlayers = [];
+      createPlayers();
+    }
+    displayPlayers();
+  });
+}
+
+
+
 
 const rendergame = (() => {
   function render_board(){
@@ -76,14 +135,16 @@ function check_board_full() {
 function check_winner() {
   const winner = document.getElementById('winner');
   let win = check_match();
-  if (win == playerOne){
-    winner.innerText = "Player One Win!";
-    board_full = true;
-  } else if (win == playerTwo) {
-    winner.innerText = "Player Two Win!";
-    board_full = true;
-  } else if (board_full) {
-    winner.innerText = "Draw!";
+  for (let i = 0; i < myPlayers.length; i += 1) {
+    if (win == playerOne){
+      winner.innerText = myPlayers[i].playerTwo + " Win!";
+      board_full = true;
+    } else if (win == playerTwo) {
+      winner.innerText = myPlayers[i].playerTwo + " Win!";
+      board_full = true;
+    } else if (board_full) {
+      winner.innerText = "Draw!";
+    }
   }
 }
 
@@ -98,8 +159,8 @@ function reset_board() {
 };
 restartButton.addEventListener('click', reset_board);
 
+addPlayerNames(' Player One', 'Player Two');
 
-
-
-
+displayPlayers();
+listenClicks();
 rendergame();
