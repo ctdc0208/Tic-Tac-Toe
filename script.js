@@ -67,33 +67,29 @@ function listenClicks() {
 
 
 const rendergame = (() => {
-  function render_board(){
     const board_container = document.querySelector(".play-area");
     board_container.innerHTML = ""
     game_board.forEach((e, i) => {
         board_container.innerHTML += `<div id="block_${i}" class="block" onclick="addcurrentTurnMove(${i})">${game_board[i]}</div>`
     });
-  };
-  render_board();
 });
 
-function addcurrentTurnMove(e){
+const addcurrentTurnMove = (e) => {
   const currentTurn = currentTurnTurn ? playerTwo : playerOne;
   if (!board_full && game_board[e] == "") {
     game_board[e] = currentTurn;
     game_loop();
   }
+  const switchTurn = () => {
+    currentTurnTurn = !currentTurnTurn;
+  }
   switchTurn();
 };
-
-function switchTurn() {
-  currentTurnTurn = !currentTurnTurn;
-}
 
 const game_loop = () => {
   rendergame();
 
-  function check_board_full() {
+  const check_board_full = () => {
       let flag = true;
       game_board.forEach(element => {
       if (element != playerOne && element != playerTwo) {
@@ -104,14 +100,15 @@ const game_loop = () => {
   }
   check_board_full();
 
-  function check_lines(a, b, c) {
+  const check_lines = (a, b, c) => {
     return (
       game_board[a] == game_board[b] &&
       game_board[b] == game_board[c] &&
       (game_board[a] == playerOne || game_board[a] == playerTwo)
     );
   }
-  function check_match() {
+
+  const check_match = () => {
     for (i = 0; i < 9; i += 3) {
       if (check_lines(i, i + 1, i + 2)) {
         return game_board[i];
@@ -130,7 +127,8 @@ const game_loop = () => {
     }
     return "";
   }
-  function check_winner() {
+
+  const check_winner = () => {
     const winner = document.getElementById('winner');
     let win = check_match();
     for (let i = 0; i < myPlayers.length; i += 1) {
