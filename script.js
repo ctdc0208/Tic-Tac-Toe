@@ -92,61 +92,62 @@ function switchTurn() {
 
 const game_loop = () => {
   rendergame();
+
+  function check_board_full() {
+      let flag = true;
+      game_board.forEach(element => {
+      if (element != playerOne && element != playerTwo) {
+        flag = false;
+      }
+    });
+    board_full = flag;
+  }
   check_board_full();
+
+  function check_lines(a, b, c) {
+    return (
+      game_board[a] == game_board[b] &&
+      game_board[b] == game_board[c] &&
+      (game_board[a] == playerOne || game_board[a] == playerTwo)
+    );
+  }
+  function check_match() {
+    for (i = 0; i < 9; i += 3) {
+      if (check_lines(i, i + 1, i + 2)) {
+        return game_board[i];
+      }
+    }
+    for (i = 0; i < 3; i++) {
+      if (check_lines(i, i + 3, i + 6)) {
+        return game_board[i];
+      }
+    }
+    if (check_lines(0, 4, 8)) {
+      return game_board[0];
+    }
+    if (check_lines(2, 4, 6)) {
+      return game_board[2];
+    }
+    return "";
+  }
+  function check_winner() {
+    const winner = document.getElementById('winner');
+    let win = check_match();
+    for (let i = 0; i < myPlayers.length; i += 1) {
+      if (win == playerOne){
+        winner.innerText = myPlayers[i].playerOne + " Win!";
+        board_full = true;
+      } else if (win == playerTwo) {
+        winner.innerText = myPlayers[i].playerTwo + " Win!";
+        board_full = true;
+      } else if (board_full) {
+        winner.innerText = "Draw!";
+      }
+    }
+  }
   check_winner();
 }
 
-function check_lines(a, b, c) {
-  return (
-    game_board[a] == game_board[b] &&
-    game_board[b] == game_board[c] &&
-    (game_board[a] == playerOne || game_board[a] == playerTwo)
-  );
-}
-function check_match() {
-  for (i = 0; i < 9; i += 3) {
-    if (check_lines(i, i + 1, i + 2)) {
-      return game_board[i];
-    }
-  }
-  for (i = 0; i < 3; i++) {
-    if (check_lines(i, i + 3, i + 6)) {
-      return game_board[i];
-    }
-  }
-  if (check_lines(0, 4, 8)) {
-    return game_board[0];
-  }
-  if (check_lines(2, 4, 6)) {
-    return game_board[2];
-  }
-  return "";
-}
-function check_board_full() {
-    let flag = true;
-    game_board.forEach(element => {
-    if (element != playerOne && element != playerTwo) {
-      flag = false;
-    }
-  });
-  board_full = flag;
-}
-
-function check_winner() {
-  const winner = document.getElementById('winner');
-  let win = check_match();
-  for (let i = 0; i < myPlayers.length; i += 1) {
-    if (win == playerOne){
-      winner.innerText = myPlayers[i].playerOne + " Win!";
-      board_full = true;
-    } else if (win == playerTwo) {
-      winner.innerText = myPlayers[i].playerTwo + " Win!";
-      board_full = true;
-    } else if (board_full) {
-      winner.innerText = "Draw!";
-    }
-  }
-}
 
 function reset_board() {
   game_board = ["", "", "", "", "", "", "", "", ""];
@@ -160,7 +161,5 @@ function reset_board() {
 restartButton.addEventListener('click', reset_board);
 
 addPlayerNames(' Player One', 'Player Two');
-
-displayPlayers();
 listenClicks();
 rendergame();
