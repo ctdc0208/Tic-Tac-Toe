@@ -10,3 +10,6 @@ is needed
 -The previous project, the "Library", in the curriculum greatly helps in this project, I was able to use my prior knowledge and codes.
 
 The HTML and CSS is done in 5 hrs of work and the JS is done within 13 hrs of work
+
+
+https://nexus0208.github.io/Tic-Tac-Toe/
